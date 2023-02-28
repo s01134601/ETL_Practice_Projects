@@ -1,7 +1,5 @@
 ## ETL_Board_of_Review_Decisions
-Project in progress - the project extracts from S3 buckets in which Cook County Board of Review's Appeal Decisions from 2020 and 2021 is stored,
-transforms the data to create tables that show the board of review's total value for properties that appealed in both 2020 and 2021 have changed. 
-This value multiplied by the tax rate will be the tax payment for properties. 
-Specifically, tables will be created for small residential buildings and small businesses. It will then be joined with the list of properties in several 
-communities on the south side, and loaded into Redshift. 
-Eventually, it will be loaded into ArcGIS for visualization.
+Project in progress:
+1. copy_data_to_s3.py retrieves data from Cook County's open API and writes the decision history in 2020 and 2021 as 2 json files to a S3 bucket. 
+2. the py documents starting with "infrastructure" set up Redshift Clusters to store the data, check its status, and delete the resource, respectively. 
+3. the upcoming python files will transforms the json files and loads 2 new tables into Redshift. The transformed data will be a table containing the properties that have appealed in both 2020 and 2021. The Redshift will be connected to visualization tools to draw a map of small businesses that have had >$10k increase in total value assessment determined by the board of review.
